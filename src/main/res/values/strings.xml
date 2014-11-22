@@ -13,6 +13,9 @@
     <string name="example">
         adb  shell am broadcast -a com.example.amotz.mockLocationForDeveloper.updateLocation  -e lat 15.3 -e lon 99
     </string>
+    <string name="testButton">TEST YOU CAN SIGNAL A MOCK LOACTION</string>
+    <string name="usage">Usage:</string>
+    <string name="exampleTitle">Example:</string>
 
 
 </resources>
