@@ -6,6 +6,9 @@ adb [-s <specific device>] shell am broadcast -a com.example.amotz.mockLocationF
         [-e alt <altitude>] [-e accurate <accurate>]
 ```
 
+```batch
+adb  shell am broadcast -a com.example.amotz.mockLocationForDeveloper.stopMock
+```
 
 Example:
 ```batch

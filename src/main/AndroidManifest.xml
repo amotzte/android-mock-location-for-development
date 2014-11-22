@@ -31,6 +31,8 @@
             <intent-filter>
 
                 <action android:name="com.example.amotz.mockLocationForDeveloper.updateLocation" />
+                <action android:name="com.example.amotz.mockLocationForDeveloper.stopMock" />
+
             </intent-filter>
         </receiver>
     </application>
