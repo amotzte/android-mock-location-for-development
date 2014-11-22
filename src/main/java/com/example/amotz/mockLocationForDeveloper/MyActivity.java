@@ -56,7 +56,7 @@ public class MyActivity extends Activity {
             Log.i(logTag, location.getLatitude() + " " + location.getLongitude() + "from provider: " + location.getProvider());
             Toast.makeText(MyActivity.this,location.getLatitude() + " " + location.getLongitude() + " received from provider: " + location.getProvider(),Toast.LENGTH_LONG).show();
             if (location.getLatitude()==dummyLat && location.getLongitude()==dummylong) {
-                Toast.makeText(MyActivity.this,"Test pass, this mean that you can use this app from command line",Toast.LENGTH_LONG).show();
+                Toast.makeText(MyActivity.this,"Test pass, For provider:" + location.getProvider(),Toast.LENGTH_LONG).show();
             }
             else {
                 //Toast.makeText(MyActivity.this,"Test fail, this mean that you CANT use this app from command line",Toast.LENGTH_LONG).show();
@@ -106,8 +106,13 @@ public class MyActivity extends Activity {
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         // Register to both GPS and network providers
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0,0, locationListener);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        }
+        if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        }
+
     }
 
     @Override
