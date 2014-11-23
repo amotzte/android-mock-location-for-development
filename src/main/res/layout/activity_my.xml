@@ -22,12 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/howTo"
+        android:text="@string/usageTitle"
         android:id="@+id/textView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:background="@android:color/black"
-        android:autoText="false"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -36,11 +35,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/example"
         android:background="@android:color/black"
-        android:autoText="false"
         android:id="@+id/example"
         android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +48,8 @@
         android:text="@string/usage"
         android:id="@+id/textView2"
         android:layout_above="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +58,8 @@
         android:text="@string/exampleTitle"
         android:id="@+id/textView3"
         android:layout_above="@id/example"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"/>
 
 
 </RelativeLayout>
