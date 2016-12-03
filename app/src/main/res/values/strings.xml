@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MockLocationForDeveloper</string>
+    <string name="action_help">Help</string>
+    <string name="usageTitle">        adb [-s &lt; specific device>] shell am broadcast -a send.mock  [-e lat &lt;latitude>] [-e lon &lt;longitude>]
+        [-e alt &lt;altitude>] [-e accurate &lt;accurate>]</string>
+    <string name="example">        adb  shell am broadcast -a send.mock  -e lat 15.3 -e lon 99</string>
+    <string name="testButton">TEST YOU CAN SIGNAL A MOCK LOACTION</string>
+    <string name="usage">Usage:</string>
+    <string name="exampleTitle">Example:</string>
+    <string name="title_activity_help">help</string>
+    <string name="hello_world">Hello world!</string>
 </resources>
