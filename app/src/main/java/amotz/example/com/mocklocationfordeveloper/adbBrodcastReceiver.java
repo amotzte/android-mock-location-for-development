@@ -19,7 +19,7 @@ public class adbBrodcastReceiver extends BroadcastReceiver {
 
 
 
-        if (intent.getAction().equals("com.example.amotz.mockLocationForDeveloper.stopMock")) {
+        if (intent.getAction().equals("stop.mock")) {
             if (mockGPS!=null) {
                 mockGPS.shutdown();
             }
@@ -41,7 +41,6 @@ public class adbBrodcastReceiver extends BroadcastReceiver {
             Log.i(logTag, String.format("setting mock to Latitude=%f, Longitude=%f Altitude=%f Accuracy=%f", lat, lon, alt, accurate));
             mockGPS.pushLocation(lat, lon, alt, accurate);
             mockWifi.pushLocation(lat, lon, alt, accurate);
-
         }
     }
 }
