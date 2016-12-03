@@ -1,10 +1,12 @@
 package amotz.example.com.mocklocationfordeveloper;
 
+import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (!isMockSettingsON(this)) {
+        if (!isMockSettingsON()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("In order to use this app you must enable mock location do you want to enable it now?").setTitle("Mock location is not enable");
             builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
@@ -86,12 +88,28 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         super.onStop();
     }
 
-    private boolean isMockSettingsON(Context context) {
-        if (android.os.Build.VERSION.SDK_INT < 18) {
-            String st = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ALLOW_MOCK_LOCATION);
-            return st.equals("1");
+    private boolean isMockSettingsON() {
+        boolean isMockLocation = false;
+        try
+        {
+            //if marshmallow
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            {
+                AppOpsManager opsManager = (AppOpsManager) this.getSystemService(Context.APP_OPS_SERVICE);
+                isMockLocation = (opsManager.checkOp(AppOpsManager.OPSTR_MOCK_LOCATION, android.os.Process.myUid(), BuildConfig.APPLICATION_ID)== AppOpsManager.MODE_ALLOWED);
+            }
+            else
+            {
+                // in marshmallow this will always return true
+                isMockLocation = !android.provider.Settings.Secure.getString(this.getContentResolver(), "mock_location").equals("0");
+            }
         }
-        return true;
+        catch (Exception e)
+        {
+            return isMockLocation;
+        }
+
+        return isMockLocation;
 
     }
 
